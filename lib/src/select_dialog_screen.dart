@@ -222,7 +222,7 @@ class _BodyLayoutState extends State<BodyLayout> {
                   children: <Widget>[
                     Container(
                       child: Text(
-                        '${dialogList[index].data.name ?? 'Not available'}',
+                        '${dialogList[index].data.name ?? ''}',
                         style: TextStyle(
                             color: primaryColor,
                             fontWeight: FontWeight.bold,
@@ -233,7 +233,7 @@ class _BodyLayoutState extends State<BodyLayout> {
                     ),
                     Container(
                       child: Text(
-                        '${dialogList[index].data.lastMessage ?? 'Not available'}',
+                        '${dialogList[index].data.lastMessage ?? ''}',
                         style: TextStyle(color: primaryColor),
                       ),
                       alignment: Alignment.centerLeft,
@@ -262,7 +262,7 @@ class _BodyLayoutState extends State<BodyLayout> {
             ),
             Container(
               child: Text(
-                '${dialogList[index].data.lastMessageDateSent != null ? DateFormat('MMM dd').format(DateTime.fromMillisecondsSinceEpoch(dialogList[index].data.lastMessageDateSent * 1000)) : 'Not available'}',
+                '${dialogList[index].data.lastMessageDateSent != null ? DateFormat('MMM dd').format(DateTime.fromMillisecondsSinceEpoch(dialogList[index].data.lastMessageDateSent * 1000)) : ''}',
                 style: TextStyle(color: primaryColor),
               ),
             ),

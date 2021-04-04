@@ -1,5 +1,7 @@
 name: chat_sample
 description: Chat Sample
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
 
 version: 0.2.0
 
@@ -22,6 +24,16 @@ dependencies:
   flutter_local_notifications: ^4.0.0
   connectivity: ^2.0.2
   logging: ^0.11.4
+
+  # Audio & Video
+  flutter_voip_push_notification: ^0.0.3
+  flutter_call_kit:
+    git:
+      url: git://github.com/peerwaya/flutter_call_kit.git
+      ref: master
+
+  connectycube_flutter_call_kit: ^0.0.1-dev.1
+
 
 dev_dependencies:
   flutter_test:

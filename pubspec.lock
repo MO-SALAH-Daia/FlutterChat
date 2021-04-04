@@ -92,6 +92,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.6"
+  connectycube_flutter_call_kit:
+    dependency: "direct main"
+    description:
+      name: connectycube_flutter_call_kit
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1-dev.1"
   connectycube_sdk:
     dependency: "direct main"
     description:
@@ -216,6 +223,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.4.2"
+  flutter_call_kit:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: master
+      resolved-ref: f6310f0b3c574235a8dd7b605730d56a79bc3415
+      url: "git://github.com/peerwaya/flutter_call_kit.git"
+    source: git
+    version: "0.0.3"
   flutter_local_notifications:
     dependency: "direct main"
     description:
@@ -242,6 +258,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_voip_push_notification:
+    dependency: "direct main"
+    description:
+      name: flutter_voip_push_notification
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.3"
   flutter_web_plugins:
     dependency: transitive
     description: flutter

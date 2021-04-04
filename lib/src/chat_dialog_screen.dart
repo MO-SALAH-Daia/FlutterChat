@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:chat_sample/src/managers/call_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
@@ -17,21 +18,56 @@ import '../src/widgets/common.dart';
 import '../src/widgets/full_photo.dart';
 import '../src/widgets/loading.dart';
 
-class ChatDialogScreen extends StatelessWidget {
+class ChatDialogScreen extends StatefulWidget {
   final CubeUser _cubeUser;
   final CubeDialog _cubeDialog;
 
   ChatDialogScreen(this._cubeUser, this._cubeDialog);
 
   @override
+  _ChatDialogScreenState createState() => _ChatDialogScreenState();
+}
+
+class _ChatDialogScreenState extends State<ChatDialogScreen> {
+  Set<int> _selectedUsers;
+  @override
+  void initState() {
+    super.initState();
+    _selectedUsers = {};
+    _selectedUsers.add(widget._cubeDialog.userId);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          _cubeDialog.name != null ? _cubeDialog.name : '',
+          widget._cubeDialog.name != null ? widget._cubeDialog.name : '',
         ),
         centerTitle: false,
         actions: <Widget>[
+          widget._cubeDialog.type == CubeDialogType.GROUP
+              ? Container()
+              : IconButton(
+                  onPressed: () => CallManager.instance.startNewCall(
+                      context, CallType.VIDEO_CALL, _selectedUsers,
+                      cubeDialog: widget._cubeDialog),
+                  icon: Icon(
+                    Icons.video_call,
+                    color: Colors.white,
+                  ),
+                ),
+          widget._cubeDialog.type == CubeDialogType.GROUP
+              ? Container()
+              : IconButton(
+                  onPressed: () => CallManager.instance.startNewCall(
+                      context, CallType.AUDIO_CALL, _selectedUsers,
+                      cubeDialog: widget._cubeDialog),
+                  icon: Icon(
+                    Icons.phone,
+                    color: Colors.white,
+                  ),
+                ),
           IconButton(
             onPressed: () => _chatDetails(context),
             icon: Icon(
@@ -41,16 +77,17 @@ class ChatDialogScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: ChatScreen(_cubeUser, _cubeDialog),
+      body: ChatScreen(widget._cubeUser, widget._cubeDialog),
     );
   }
 
   _chatDetails(BuildContext context) async {
-    log("_chatDetails= $_cubeDialog");
+    log("_chatDetails= ${widget._cubeDialog}");
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ChatDetailsScreen(_cubeUser, _cubeDialog),
+        builder: (context) =>
+            ChatDetailsScreen(widget._cubeUser, widget._cubeDialog),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:chat_sample/src/managers/call_manager.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,8 @@ class _AppState extends State<App> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    CallManager.instance.init(context);
+
     return MaterialApp(
       theme: ThemeData(
         primarySwatch: Colors.green,
