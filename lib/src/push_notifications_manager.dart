@@ -108,11 +108,11 @@ class PushNotificationsManager {
     if (Platform.isAndroid) {
       parameters.channel = NotificationsChannels.GCM;
       parameters.platform = CubePlatform.ANDROID;
-      parameters.bundleIdentifier = "com.connectycube.flutter.chat_sample";
+      // parameters.bundleIdentifier = "com.connectycube.flutter.chat_sample";
     } else if (Platform.isIOS) {
       parameters.channel = NotificationsChannels.APNS;
       parameters.platform = CubePlatform.IOS;
-      parameters.bundleIdentifier = "com.connectycube.flutter.chatSample";
+      // parameters.bundleIdentifier = "com.connectycube.flutter.chatSample";
     }
 
     String deviceId = await DeviceId.getID;

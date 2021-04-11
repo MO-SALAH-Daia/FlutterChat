@@ -205,12 +205,14 @@ class LoginPageState extends State<LoginPage> {
     }
   }
 
+//! 1*LOGIN
   void _loginPressed() {
     print('login with $_login and $_password');
     _loginToCC(context, CubeUser(login: _login, password: _password),
         saveUser: true);
   }
 
+//! 2*SIGNIN
   void _createAccountPressed() {
     print('create an user with $_login and $_password');
     _signInCC(context,
@@ -245,6 +247,7 @@ class LoginPageState extends State<LoginPage> {
     }).catchError(_processLoginError);
   }
 
+//! 2*SIGNIN
   _signInCC(BuildContext context, CubeUser user) async {
     if (_isLoginContinues) return;
 
@@ -268,6 +271,7 @@ class LoginPageState extends State<LoginPage> {
     }).catchError(_processLoginError);
   }
 
+//! 1*LOGIN
   _loginToCC(BuildContext context, CubeUser user, {bool saveUser = false}) {
     if (_isLoginContinues) return;
     setState(() {
@@ -297,6 +301,7 @@ class LoginPageState extends State<LoginPage> {
     }).catchError(_processLoginError);
   }
 
+//! .toString().contains('has already been taken')
   void _processLoginError(exception) {
     log("Login error $exception", TAG);
     setState(() {
